@@ -1,0 +1,59 @@
+cd c:\Users\Evan\Documents\AirlineResearch\Clustering
+.\sqlite3 AirlineResearch.db
+
+.open AirlineResearch.db
+
+create table AR2015 (
+YEAR int,
+MONTH int,
+DAY_OF_MONTH int,
+DAY_OF_WEEK int,
+UNIQUE_CARRIER varchar(5),
+TAIL_NUM int,
+FLIGHT_NUM varchar(5),
+ORIGIN varchar(5),
+DEST varchar(5),
+DEP_TIME int,
+DEP_DELAY_MINUTES int,
+TAXI_OUT int,
+TAXI_IN int,
+ARR_DELAY_MINUTES int,
+CANCELLED int,
+CANCELLATION_CODE varchar(2),
+DIVERTED int,
+ACTUAL_ELAPSED_TIME int,
+AIR_TIME int,
+FLIGHTS int,
+DISTANCE real,
+CARRIER_DELAY int,
+WEATHER_DELAY int,
+NAS_DELAY int,
+SECURITY_DELAY int,
+LATE_AIRCRAFT_DELAY int,
+FIRST_DEP_TIME int,
+TOTAL_ADD_G_TIME int,
+LONGEST_ADD_G_TIME int
+);
+
+.separator "\t"
+.import A2015.csv AR2015
+
+create table carriers (
+   Code varchar(5), 
+   Description varchar(50));
+   
+.separator "\t"
+.import carrier.csv carriers
+
+create table airports (
+   iata varchar(5), 
+   airport varchar(50),
+   city varchar(30),
+   state varchar(4),
+   country varchar(20),
+   lat real,
+   long real
+);
+
+.separator "\t"
+.import airport.csv airports
